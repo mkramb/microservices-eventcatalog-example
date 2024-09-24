@@ -1,0 +1,15 @@
+{
+    "properties": {
+        "message": {
+            "title": "Message",
+            "type": "string",
+            "x-parser-schema-id": "<anonymous-schema-1>"
+        }
+    },
+    "required": [
+        "message"
+    ],
+    "title": "Incoming",
+    "type": "object",
+    "x-parser-schema-id": "Incoming"
+}

@@ -1,0 +1,15 @@
+asyncapi: 2.6.0
+defaultContentType: application/json
+info:
+  title: FastAPI
+  version: 0.1.0
+  description: ''
+servers:
+  development:
+    url: nats://nats:4222
+    protocol: nats
+    protocolVersion: custom
+channels: {}
+components:
+  messages: {}
+  schemas: {}

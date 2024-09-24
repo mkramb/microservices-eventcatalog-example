@@ -1,0 +1,32 @@
+{
+    "editor.accessibilitySupport": "off",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit"
+    },
+    "files.associations": {
+        "Tiltfile.*": "tiltfile",
+    },
+    // python
+    "python.defaultInterpreterPath": ".venv/bin/python",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.indexing": true,
+    "[python]": {
+        "editor.formatOnType": true,
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    // javascript
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "[javascript]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}

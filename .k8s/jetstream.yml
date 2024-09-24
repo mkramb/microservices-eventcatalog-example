@@ -1,0 +1,45 @@
+#
+# stream: events
+#
+apiVersion: jetstream.nats.io/v1beta2
+kind: Stream
+metadata:
+    name: events
+spec:
+    name: events
+    subjects:
+        - "events.*.*"
+    storage: "file"
+    replicas: 1
+---
+#
+# stream: events-dlq
+#
+apiVersion: jetstream.nats.io/v1beta2
+kind: Stream
+metadata:
+    name: events-dlq
+spec:
+    name: events-dlq
+    subjects:
+        - events-dlq
+        - $JS.EVENT.ADVISORY.CONSUMER.MAX_DELIVERIES.events.*
+    storage: "file"
+    replicas: 1
+---
+#
+# consumer: events-consumer
+#
+apiVersion: jetstream.nats.io/v1beta2
+kind: Consumer
+metadata:
+    name: events-consumer
+spec:
+    streamName: events
+    durableName: events-consumer
+    filterSubject: events.*.*
+    ackPolicy: explicit
+    ackWait: 10s
+    maxAckPending: 1
+    maxDeliver: 5
+

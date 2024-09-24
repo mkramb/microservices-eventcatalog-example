@@ -1,0 +1,40 @@
+asyncapi: 2.6.0
+defaultContentType: application/json
+info:
+  title: FastAPI
+  version: 0.1.0
+  description: ''
+servers:
+  development:
+    url: nats://nats:4222
+    protocol: nats
+    protocolVersion: custom
+channels:
+  events.*.*:Handler:
+    servers:
+    - development
+    bindings:
+      nats:
+        subject: events.*.*
+        bindingVersion: custom
+    subscribe:
+      message:
+        $ref: '#/components/messages/events.*.*:Handler:Message'
+components:
+  messages:
+    events.*.*:Handler:Message:
+      title: events.*.*:Handler:Message
+      correlationId:
+        location: $message.header#/correlation_id
+      payload:
+        $ref: '#/components/schemas/Incoming'
+  schemas:
+    Incoming:
+      properties:
+        message:
+          title: Message
+          type: string
+      required:
+      - message
+      title: Incoming
+      type: object
